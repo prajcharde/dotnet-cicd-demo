@@ -23,13 +23,13 @@ jobs:
         dotnet-version: 8.0.x
 
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore DotnetCICD.sln
 
     - name: Build
-      run: dotnet build --no-restore --configuration Release
+      run: dotnet build DotnetCICD.sln --configuration Release
 
-    - name: Run tests
-      run: dotnet test --no-build --verbosity normal
+    - name: Test
+      run: dotnet test DotnetCICD.sln --verbosity normal
 
     - name: Publish
       run: dotnet publish DotnetCICD/DotnetCICD.csproj -c Release -o publish
